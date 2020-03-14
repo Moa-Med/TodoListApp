@@ -16,7 +16,6 @@ public class ProjectMenu {
                 ">> Pick an option: ");
     }
 
-
     public void subMenuProjectChoices() {
         String input;
         Scanner sc = new Scanner(System.in);

@@ -1,6 +1,8 @@
 package com.todoApp.Task;
 
-public class TaskModel {
+import java.io.Serializable;
+
+public class TaskModel implements Serializable {
 
        private String title;
        private String due_date;

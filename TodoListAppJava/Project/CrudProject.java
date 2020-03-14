@@ -24,13 +24,21 @@ public class CrudProject {
     public void addProject(){
 
         System.out.print("*** Adding a Project *** \nEnter the Project Name : ");
-        String input=sc.nextLine();
+        String projectName = sc.nextLine();
+        boolean verifyProject = false;
+
+        for(int i = 0; i<listProject.size(); i++) {
+            if (listProject.get(i).getName_project().equalsIgnoreCase(projectName)) {
+                verifyProject = true;
+            }
+        }
 
         //add project if doesnt exist
-        if(listProject.contains(input)){
-            System.out.println("This Project already exist");
+        if(verifyProject && projectName == ""){
+            System.out.println("This Project already exist or name empty ");
         } else {
-            listProject.add(new ProjectModel(input));
+            listProject.add(new ProjectModel(projectName));
+            System.out.println("Project created ");
         }
     }
 
@@ -47,7 +55,12 @@ public class CrudProject {
                 exist=true;
                 System.out.print("Enter a new Project Name : ");
                 String newInput=sc.nextLine();
-                listProject.get(i).setName_project(newInput);
+                //verifying if the new input is not empty
+                if(newInput==""){
+                    System.out.print(" Project name is empty");
+                }else {
+                    listProject.get(i).setName_project(newInput);
+                }
             }
         }
 
@@ -69,8 +82,9 @@ public class CrudProject {
                 listProject.remove(i);
             }
         }
-        if(!exist){ System.out.println("This project doesn't exist... "); }
-
+        if(!exist){ System.out.println("This project doesn't exist... "); }{
+            System.out.print("Project deleted ");
         }
 
+    }
 }
