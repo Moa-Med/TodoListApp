@@ -1,13 +1,14 @@
-package com.todoApp.Project;
+package com.todoApp;
 
+import com.todoApp.Project.CrudProject;
 import com.todoApp.Task.CrudTask;
 
 import java.util.Scanner;
 
-public class ProjectMenu {
+public class TodoMenu {
 
     public void displaySubMenuProject() {
-        System.out.print(" \n>>  Project \n" +
+        System.out.print(" \n>>*** Project *** \n" +
                 ">> (1) Add new Project \n" +
                 ">> (2) View Project  \n" +
                 ">> (3) Update Project \n" +
@@ -16,7 +17,7 @@ public class ProjectMenu {
                 ">> Pick an option: ");
     }
 
-    public void subMenuProjectChoices() {
+    public void subMenuProjectCrud() {
         String input;
         Scanner sc = new Scanner(System.in);
 
@@ -69,7 +70,7 @@ public class ProjectMenu {
     }
 
     // the sub menu edit methods been called
-    public void subMenuEdit() {
+    public void subMenuEditTask() {
         String input;
         Scanner sc = new Scanner(System.in);
 

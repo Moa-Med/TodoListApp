@@ -8,19 +8,9 @@ public class ProjectModel {
     private String name_project;
     private  ArrayList<TaskModel> taskList=new ArrayList<>();
 
-    public ProjectModel(String name_project){
-        this.name_project=name_project;
-    }
+    public ProjectModel(String name_project){ this.name_project=name_project; }
 
-    public ProjectModel(){
-    }
-
-    public void addTaskToProject(String title, String due_date, String status, String project) {
-
-        ArrayList<TaskModel> taskList=new ArrayList<>();
-        taskList.add(new TaskModel(title,due_date,status,project));
-
-    }
+    public ProjectModel(){ }
 
     public String getName_project(){
         return this.name_project;

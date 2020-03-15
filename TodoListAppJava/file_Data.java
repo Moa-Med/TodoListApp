@@ -10,25 +10,21 @@ import static com.todoApp.Project.CrudProject.listProject;
 
 class file_Data {
 
-    TaskModel task = new TaskModel();
+    File f = new File("TaskDB.txt");
 
-    //writing in the file
     public void WriteInFile() {
 
         ArrayList<TaskModel> tasktList = new ArrayList<>();
 
-        //fill the file with list of task
+        //fill the new task array with list of task existing
          for(int i = 0; i<listProject.size(); i++) {
                for (int j = 0; j < listProject.get(i).getTaskList().size(); j++) {
                    tasktList.add(listProject.get(i).getTaskList().get(j));
                 }
              }
 
-        //create file and write these objects in a file
-        File f = new File("TaskDB.txt");
-
         try {
-            //write in the file
+            //writing the array in the file
             FileOutputStream fosFile = new FileOutputStream(f);
             ObjectOutputStream oosFile= new ObjectOutputStream(fosFile);
             oosFile.writeObject(tasktList);
@@ -41,13 +37,13 @@ class file_Data {
         }
     }
 
+
     public void ReadFromFile() {
 
-        //create file and write these object to a file
-        File f = new File("TaskDB.txt");
+        //if file exist and not empty read from it
         if(f.exists() && f.length()!=0) {
             try {
-                // read object from file
+                // read the array object back from the ssame file
                 FileInputStream fisTask = new FileInputStream("TaskDB.txt");
                 ObjectInputStream oisTask = new ObjectInputStream(fisTask);
 
@@ -65,25 +61,23 @@ class file_Data {
         }
     }
 
+    //inserting the data task in todoApp arraylist
     public void addFileData(ArrayList<TaskModel> readTask) {
 
         HashSet<String> hashData = new HashSet();
         int counterProject = -1 ;
 
-        //Adding project in the project list
+        //getting all projects in the tasks
         for (int i = 0; i < readTask.size(); i++) {
             hashData.add(readTask.get(i).getProject());
         }
 
         for (String prjName : hashData) {
-
             counterProject++;
             listProject.add(new ProjectModel(prjName));
-
+            //adding the tasks in the array of corresponding project
             for (int i = 0; i < readTask.size()  ; i++) {
-
                 if (prjName.equalsIgnoreCase(readTask.get(i).getProject())) {
-
                     listProject.get(counterProject).getTaskList().add(readTask.get(i));
                   }
                 }
